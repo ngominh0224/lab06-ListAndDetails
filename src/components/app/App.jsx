@@ -8,12 +8,8 @@ export default function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/" exact component={HeyArnoldContainer} />
-          <Route
-            path="/characters/:id"
-            exact
-            render={(routerProps) => <DetailsContainer {...routerProps} />}
-          />
+          <Route path="/" component={HeyArnoldContainer} />
+          <Route path="/characters/:id" component={DetailsContainer} />
         </Switch>
       </Router>
     </div>

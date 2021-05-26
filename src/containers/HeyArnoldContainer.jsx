@@ -17,9 +17,6 @@ const HeyArnoldContainer = () => {
 
   return (
     <section>
-      <button onClick={() => setPage((prevPage) => prevPage + 1)}>
-        {page}
-      </button>
       <CharacterList characters={characters} />
     </section>
   );
