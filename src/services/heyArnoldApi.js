@@ -2,9 +2,9 @@ export const getAllCharacters = async () => {
   const res = await fetch(
     `https://hey-arnold-api.herokuapp.com/api/v1/characters`
   );
-  const json = await res.json();
+  const results = await res.json();
 
-  return json.map((character) => {
+  return results.map((character) => {
     return {
       id: character._id,
       name: character.name,
@@ -17,13 +17,13 @@ export async function fetchSingleCharacter(id) {
   const res = await fetch(
     `https://hey-arnold-api.herokuapp.com/api/v1/characters/${id}`
   );
-  const json = await res.json();
+  const results = await res.json();
+  const array = [];
+  array.push(results);
 
-  return json.map((character) => {
-    return {
-      id: character._id,
-      name: character.name,
-      image: character.image,
-    };
-  });
+  return array.map((character) => ({
+    id: character._id,
+    name: character.name,
+    image: character.image,
+  }));
 }

@@ -3,21 +3,20 @@ import CharacterList from '../components/characters/CharacterList';
 import { getAllCharacters } from '../services/heyArnoldApi';
 
 const HeyArnoldContainer = () => {
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [characters, setCharacters] = useState([]);
+  const [character, setCharacter] = useState([]);
 
   useEffect(() => {
-    getAllCharacters(page)
-      .then(setCharacters)
+    getAllCharacters()
+      .then(setCharacter)
       .finally(() => setLoading(false));
-  }, [page]);
+  }, []);
 
   if (loading) return <h1>Loading...</h1>;
 
   return (
     <section>
-      <CharacterList characters={characters} />
+      <CharacterList characters={character} />
     </section>
   );
 };

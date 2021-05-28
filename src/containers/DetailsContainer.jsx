@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import CharacterDetails from '../components/characters/CharacterDetails';
+import CharacterList from '../components/characters/CharacterList';
 import { fetchSingleCharacter } from '../services/heyArnoldApi';
+import { useParams } from 'react-router';
 
-const DetailsContainer = ({ match }) => {
+const DetailsContainer = () => {
   const [loading, setLoading] = useState(true);
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = useState([]);
+  const params = useParams();
 
   useEffect(() => {
-    fetchSingleCharacter(match.params.id)
+    fetchSingleCharacter(params.id)
       .then(setCharacter)
       .finally(() => setLoading(false));
   }, []);
 
-  if(loading) return <h1>Loading...</h1>;
+  if (loading) return <h1>Loading...</h1>;
   return (
-    <CharacterDetails character={character}/>
+    <div>
+      <CharacterList characters={character} />
+    </div>
   );
-};
-
-DetailsContainer.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  }).isRequired
 };
 
 export default DetailsContainer;

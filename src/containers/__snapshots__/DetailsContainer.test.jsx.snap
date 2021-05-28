@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsContainer gives one character 1`] = `
+<ul
+  aria-label="characters"
+>
+  <li>
+    <div>
+      <a
+        href="/characters/undefined"
+      >
+        <img />
+        <p />
+      </a>
+    </div>
+  </li>
+</ul>
+`;
